@@ -3,146 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>My AI Agent</title>
 
 <style>
+
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0f1117;
-  color: white;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f1117;
+    color: white;
 }
 
 .app {
-  width: 100%;
-  max-width: 950px;
-  height: 100vh;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
+    max-width: 950px;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
-  padding: 18px;
-  background: #181c25;
-  border-bottom: 1px solid #303643;
+    background: #181c25;
+    padding: 18px;
+    border-bottom: 1px solid #303643;
 }
 
 header h1 {
-  margin: 0;
-  font-size: 22px;
+    margin: 0;
+    font-size: 22px;
 }
 
 header p {
-  margin: 6px 0 0;
-  color: #9da6b5;
-  font-size: 13px;
+    margin: 6px 0 0;
+    color: #9da6b5;
+    font-size: 13px;
 }
 
 #chat {
-  flex: 1;
-  overflow-y: auto;
-  padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
 }
 
 .message {
-  max-width: 85%;
-  padding: 12px 15px;
-  margin-bottom: 14px;
-  border-radius: 14px;
-  line-height: 1.5;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+    max-width: 85%;
+    padding: 12px 15px;
+    margin-bottom: 14px;
+    border-radius: 14px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 .user {
-  background: #315bea;
-  margin-left: auto;
+    background: #315bea;
+    margin-left: auto;
 }
 
 .ai {
-  background: #202631;
-  margin-right: auto;
+    background: #202631;
+    margin-right: auto;
 }
 
 .source {
-  margin-top: 8px;
-  font-size: 12px;
-  color: #9da9bd;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #9da9bd;
 }
 
 .tools {
-  display: flex;
-  gap: 7px;
-  padding: 10px 12px;
-  background: #181c25;
-  border-top: 1px solid #303643;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 7px;
+    padding: 10px 12px;
+    background: #181c25;
+    border-top: 1px solid #303643;
+    flex-wrap: wrap;
 }
 
 .tools button {
-  background: #292f3b;
-  color: white;
-  border: none;
-  padding: 9px 12px;
-  border-radius: 9px;
-  cursor: pointer;
+    background: #292f3b;
+    color: white;
+    border: none;
+    padding: 9px 12px;
+    border-radius: 9px;
+    cursor: pointer;
 }
 
 .tools button:hover {
-  background: #394151;
+    background: #394151;
 }
 
 .input-area {
-  display: flex;
-  gap: 8px;
-  padding: 12px;
-  background: #181c25;
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    background: #181c25;
 }
 
 #input {
-  flex: 1;
-  background: #272d38;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px;
-  border-radius: 10px;
-  font-size: 15px;
+    flex: 1;
+    background: #272d38;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 15px;
 }
 
 #send {
-  background: #315bea;
-  color: white;
-  border: none;
-  padding: 0 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: bold;
+    background: #315bea;
+    color: white;
+    border: none;
+    padding: 0 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 #send:hover {
-  opacity: 0.85;
+    opacity: 0.85;
 }
 
-.typing {
-  color: #9da6b5;
-  font-style: italic;
-}
-
-@media (max-width: 600px) {
-  .message {
-    max-width: 92%;
-  }
-
-  #send {
-    padding: 0 14px;
-  }
-}
 </style>
 </head>
 
@@ -151,61 +138,104 @@ header p {
 <div class="app">
 
 <header>
-  <h1>🤖 My AI Agent</h1>
-  <p>AI tanpa API Key • Belajar • Memori • Kalkulator • Google Search</p>
+
+<h1>🤖 My AI Agent</h1>
+
+<p>
+AI tanpa API Key • Belajar • Memori • Kalkulator • Google Search
+</p>
+
 </header>
+
 
 <div id="chat"></div>
 
+
 <div class="tools">
-  <button id="btnContoh">Contoh</button>
-  <button id="btnBelajar">Belajar</button>
-  <button id="btnSearch">🔎 Search</button>
-  <button id="btnReset">🗑️ Reset</button>
+
+<button id="btnContoh">
+Contoh
+</button>
+
+<button id="btnBelajar">
+Belajar
+</button>
+
+<button id="btnSearch">
+🔎 Search
+</button>
+
+<button id="btnReset">
+🗑️ Reset
+</button>
+
 </div>
+
 
 <div class="input-area">
-  <input
-    id="input"
-    type="text"
-    placeholder="Tulis pertanyaan..."
-    autocomplete="off"
-  >
 
-  <button id="send">Kirim</button>
+<input
+id="input"
+type="text"
+placeholder="Tulis pertanyaan..."
+autocomplete="off"
+>
+
+<button id="send">
+Kirim
+</button>
+
 </div>
 
 </div>
+
 
 <script>
 
 document.addEventListener("DOMContentLoaded", function() {
 
-const chat = document.getElementById("chat");
-const input = document.getElementById("input");
-const send = document.getElementById("send");
 
-const btnContoh = document.getElementById("btnContoh");
-const btnBelajar = document.getElementById("btnBelajar");
-const btnSearch = document.getElementById("btnSearch");
-const btnReset = document.getElementById("btnReset");
+/* =====================================================
+   ELEMENT
+===================================================== */
+
+const chat =
+    document.getElementById("chat");
+
+const input =
+    document.getElementById("input");
+
+const send =
+    document.getElementById("send");
+
+const btnContoh =
+    document.getElementById("btnContoh");
+
+const btnBelajar =
+    document.getElementById("btnBelajar");
+
+const btnSearch =
+    document.getElementById("btnSearch");
+
+const btnReset =
+    document.getElementById("btnReset");
 
 
 /* =====================================================
-   MEMORY
+   DATA MEMORY
 ===================================================== */
 
 let memory = JSON.parse(
-  localStorage.getItem("myAI_memory") || "{}"
+    localStorage.getItem("myAI_memory") || "{}"
 );
 
 
 /* =====================================================
-   TRAINING
+   DATA PEMBELAJARAN
 ===================================================== */
 
 let training = JSON.parse(
-  localStorage.getItem("myAI_training") || "{}"
+    localStorage.getItem("myAI_training") || "{}"
 );
 
 
@@ -214,59 +244,76 @@ let training = JSON.parse(
 ===================================================== */
 
 let history = JSON.parse(
-  localStorage.getItem("myAI_history") || "[]"
+    localStorage.getItem("myAI_history") || "[]"
 );
 
 
 /* =====================================================
-   CHAT
+   MENAMPILKAN PESAN
 ===================================================== */
 
 function pesan(text, type = "ai", source = "") {
 
-  const div = document.createElement("div");
+    const div =
+        document.createElement("div");
 
-  div.className = "message " + type;
+    div.className =
+        "message " + type;
 
-  div.textContent = text;
+    div.textContent =
+        text;
 
-  if (source) {
 
-    const src = document.createElement("div");
+    if (source) {
 
-    src.className = "source";
+        const sumber =
+            document.createElement("div");
 
-    src.textContent = source;
+        sumber.className =
+            "source";
 
-    div.appendChild(src);
-  }
+        sumber.textContent =
+            source;
 
-  chat.appendChild(div);
+        div.appendChild(sumber);
+    }
 
-  chat.scrollTop = chat.scrollHeight;
+
+    chat.appendChild(div);
+
+    chat.scrollTop =
+        chat.scrollHeight;
 }
 
 
 /* =====================================================
-   HISTORY
+   SIMPAN HISTORY
 ===================================================== */
 
 function simpanHistory(userText, aiText) {
 
-  history.push({
-    user: userText,
-    ai: aiText,
-    time: new Date().toLocaleString()
-  });
+    history.push({
 
-  if (history.length > 100) {
-    history.shift();
-  }
+        user: userText,
 
-  localStorage.setItem(
-    "myAI_history",
-    JSON.stringify(history)
-  );
+        ai: aiText,
+
+        time: new Date().toLocaleString()
+
+    });
+
+
+    if (history.length > 100) {
+
+        history.shift();
+
+    }
+
+
+    localStorage.setItem(
+        "myAI_history",
+        JSON.stringify(history)
+    );
 }
 
 
@@ -276,29 +323,37 @@ function simpanHistory(userText, aiText) {
 
 function tokenize(text) {
 
-  return text
-    .toLowerCase()
-    .replace(/[^\w\s]/g, "")
-    .split(/\s+/)
-    .filter(Boolean);
+    return text
+        .toLowerCase()
+        .replace(/[^\w\s]/g, "")
+        .split(/\s+/)
+        .filter(Boolean);
+
 }
 
 
 /* =====================================================
-   BELAJAR
+   SISTEM BELAJAR
 ===================================================== */
 
 function belajar(text) {
 
-  if (!text.toLowerCase().startsWith("ajari")) {
-    return false;
-  }
+    if (
+        !text.toLowerCase().startsWith("ajari")
+    ) {
 
-  const parts = text.split("|");
+        return false;
 
-  if (parts.length < 3) {
+    }
 
-    pesan(
+
+    const parts =
+        text.split("|");
+
+
+    if (parts.length < 3) {
+
+        pesan(
 `Format belajar:
 
 ajari | intent | contoh kalimat
@@ -306,29 +361,48 @@ ajari | intent | contoh kalimat
 Contoh:
 
 ajari | salam | halo
+
 ajari | salam | hai
+
 ajari | matematika | saya ingin belajar matematika`
+        );
+
+        return true;
+    }
+
+
+    const intent =
+        parts[1]
+        .trim()
+        .toLowerCase();
+
+
+    const contoh =
+        parts
+        .slice(2)
+        .join("|")
+        .trim();
+
+
+    if (!training[intent]) {
+
+        training[intent] = [];
+
+    }
+
+
+    training[intent].push(
+        contoh
     );
 
-    return true;
-  }
 
-  const intent = parts[1].trim().toLowerCase();
+    localStorage.setItem(
+        "myAI_training",
+        JSON.stringify(training)
+    );
 
-  const contoh = parts.slice(2).join("|").trim();
 
-  if (!training[intent]) {
-    training[intent] = [];
-  }
-
-  training[intent].push(contoh);
-
-  localStorage.setItem(
-    "myAI_training",
-    JSON.stringify(training)
-  );
-
-  pesan(
+    pesan(
 `✅ AI berhasil belajar.
 
 Intent:
@@ -336,47 +410,79 @@ ${intent}
 
 Contoh:
 ${contoh}`
-  );
+    );
 
-  return true;
+
+    return true;
 }
 
 
 /* =====================================================
-   MENGENALI INTENT
+   MENGENALI HASIL PEMBELAJARAN
 ===================================================== */
 
 function kenaliIntent(text) {
 
-  const words = tokenize(text);
+    const words =
+        tokenize(text);
 
-  let bestIntent = null;
-  let bestScore = 0;
 
-  for (const intent in training) {
+    let bestIntent =
+        null;
 
-    for (const example of training[intent]) {
+    let bestScore =
+        0;
 
-      const exampleWords = tokenize(example);
 
-      let score = 0;
+    for (
+        const intent in training
+    ) {
 
-      words.forEach(word => {
+        for (
+            const example of training[intent]
+        ) {
 
-        if (exampleWords.includes(word)) {
-          score++;
+            const exampleWords =
+                tokenize(example);
+
+
+            let score =
+                0;
+
+
+            words.forEach(
+                function(word) {
+
+                    if (
+                        exampleWords.includes(word)
+                    ) {
+
+                        score++;
+
+                    }
+
+                }
+            );
+
+
+            if (
+                score > bestScore
+            ) {
+
+                bestScore =
+                    score;
+
+                bestIntent =
+                    intent;
+
+            }
+
         }
 
-      });
-
-      if (score > bestScore) {
-        bestScore = score;
-        bestIntent = intent;
-      }
     }
-  }
 
-  return bestIntent;
+
+    return bestIntent;
 }
 
 
@@ -386,189 +492,90 @@ function kenaliIntent(text) {
 
 function hitung(text) {
 
-  let expression = text
-    .toLowerCase()
-    .replace("hitung", "")
-    .replace("berapa", "")
-    .replace("hasil", "")
-    .replace("=", "")
-    .trim();
+    let expression =
+        text
+        .toLowerCase()
+        .replace("hitung", "")
+        .replace("berapa", "")
+        .replace("hasil", "")
+        .replace("=", "")
+        .trim();
 
-  if (!/^[0-9+\-*/().%\s]+$/.test(expression)) {
+
+    /*
+       Hanya mengizinkan
+       angka dan operator matematika
+    */
+
+    if (
+        !/^[0-9+\-*/().%\s]+$/.test(expression)
+    ) {
+
+        return null;
+
+    }
+
+
+    try {
+
+        const result =
+            Function(
+                '"use strict"; return (' +
+                expression +
+                ')'
+            )();
+
+
+        if (
+            typeof result === "number" &&
+            Number.isFinite(result)
+        ) {
+
+            return result;
+
+        }
+
+    } catch (error) {
+
+    }
+
+
     return null;
-  }
-
-  try {
-
-    const result = Function(
-      '"use strict"; return (' +
-      expression +
-      ')'
-    )();
-
-    if (
-      typeof result === "number" &&
-      Number.isFinite(result)
-    ) {
-      return result;
-    }
-
-  } catch (error) {}
-
-  return null;
 }
 
 
 /* =====================================================
-   SEARCH OTOMATIS
-===================================================== */
-
-async function cariWeb(query) {
-
-  pesan(
-    "🔎 Mencari informasi: " + query,
-    "user"
-  );
-
-  const loading = document.createElement("div");
-
-  loading.className = "message ai typing";
-
-  loading.textContent =
-    "Sedang mencoba mencari jawaban...";
-
-  chat.appendChild(loading);
-
-  chat.scrollTop = chat.scrollHeight;
-
-
-  try {
-
-    const url =
-      "https://api.duckduckgo.com/" +
-      "?q=" +
-      encodeURIComponent(query) +
-      "&format=json" +
-      "&no_html=1" +
-      "&skip_disambig=1";
-
-    const response = await fetch(url);
-
-    if (!response.ok) {
-      throw new Error("Search gagal");
-    }
-
-    const data = await response.json();
-
-    loading.remove();
-
-
-    /* ==========================================
-       JIKA ADA JAWABAN
-    ========================================== */
-
-    if (data.AbstractText) {
-
-      pesan(
-        data.AbstractText,
-        "ai",
-        "Sumber: " +
-        (data.AbstractSource || "DuckDuckGo")
-      );
-
-      return;
-    }
-
-
-    /* ==========================================
-       JIKA ADA ANSWER
-    ========================================== */
-
-    if (data.Answer) {
-
-      pesan(
-        data.Answer,
-        "ai",
-        "Sumber: DuckDuckGo"
-      );
-
-      return;
-    }
-
-
-    /* ==========================================
-       RELATED TOPICS
-    ========================================== */
-
-    if (
-      data.RelatedTopics &&
-      data.RelatedTopics.length > 0
-    ) {
-
-      const hasil = [];
-
-      data.RelatedTopics
-        .slice(0, 5)
-        .forEach(item => {
-
-          if (item.Text) {
-            hasil.push("• " + item.Text);
-          }
-
-        });
-
-      if (hasil.length > 0) {
-
-        pesan(
-`Aku menemukan beberapa informasi:
-
-${hasil.join("\n\n")}`,
-          "ai",
-          "Sumber: DuckDuckGo"
-        );
-
-        return;
-      }
-    }
-
-
-    /* ==========================================
-       TIDAK ADA HASIL
-       → GOOGLE
-    ========================================== */
-
-    bukaGoogle(query);
-
-  }
-
-  catch (error) {
-
-    loading.remove();
-
-    pesan(
-      "Aku tidak mendapatkan jawaban otomatis. 🔎\nAku akan membuka Google dengan pertanyaanmu.",
-      "ai"
-    );
-
-    bukaGoogle(query);
-  }
-}
-
-
-/* =====================================================
-   BUKA GOOGLE
+   GOOGLE SEARCH
 ===================================================== */
 
 function bukaGoogle(query) {
 
-  const googleURL =
-    "https://www.google.com/search?q=" +
-    encodeURIComponent(query);
+    const googleURL =
+        "https://www.google.com/search?q=" +
+        encodeURIComponent(query);
 
-  window.open(
-    googleURL,
-    "_blank"
-  );
+
+    window.open(
+        googleURL,
+        "_blank"
+    );
+}
+
+
+/* =====================================================
+   PENCARIAN
+===================================================== */
+
+function cariWeb(query) {
+
+    pesan(
+        "🔎 Aku akan mencari di Google:\n\n" +
+        query,
+        "ai"
+    );
+
+
+    bukaGoogle(query);
 }
 
 
@@ -578,58 +585,85 @@ function bukaGoogle(query) {
 
 function apakahSearch(text) {
 
-  const lower = text.toLowerCase();
+    const lower =
+        text.toLowerCase();
 
-  const patterns = [
-    "cari ",
-    "carikan ",
-    "search ",
-    "googling ",
-    "berita tentang ",
-    "informasi tentang "
-  ];
 
-  for (const pattern of patterns) {
+    const patterns = [
 
-    if (lower.startsWith(pattern)) {
+        "cari ",
 
-      return text
-        .substring(pattern.length)
-        .trim();
+        "carikan ",
+
+        "search ",
+
+        "googling ",
+
+        "berita tentang ",
+
+        "informasi tentang "
+
+    ];
+
+
+    for (
+        const pattern of patterns
+    ) {
+
+        if (
+            lower.startsWith(pattern)
+        ) {
+
+            return text
+                .substring(pattern.length)
+                .trim();
+
+        }
+
     }
-  }
 
-  return null;
+
+    return null;
 }
 
 
 /* =====================================================
-   SIMPAN INGATAN
+   MEMORY
 ===================================================== */
 
 function simpanIngatan(text) {
 
-  if (!text.toLowerCase().startsWith("ingat ")) {
-    return false;
-  }
+    if (
+        !text.toLowerCase().startsWith("ingat ")
+    ) {
 
-  const value =
-    text.substring(6).trim();
+        return false;
 
-  memory.catatan = value;
+    }
 
-  localStorage.setItem(
-    "myAI_memory",
-    JSON.stringify(memory)
-  );
 
-  pesan(
+    const value =
+        text.substring(6).trim();
+
+
+    memory.catatan =
+        value;
+
+
+    localStorage.setItem(
+        "myAI_memory",
+        JSON.stringify(memory)
+    );
+
+
+    pesan(
 `✅ Aku akan mengingat:
 
 ${value}`
-  );
+    );
 
-  return true;
+
+    return true;
 }
 
 
@@ -639,78 +673,146 @@ ${value}`
 
 async function proses(text) {
 
-  const lower =
-    text.toLowerCase().trim();
+    const lower =
+        text.toLowerCase().trim();
 
 
-  /* BELAJAR */
+    /* -----------------------------------------
+       BELAJAR
+    ----------------------------------------- */
 
-  if (belajar(text)) {
-    return;
-  }
+    if (
+        belajar(text)
+    ) {
 
-
-  /* INGAT */
-
-  if (simpanIngatan(text)) {
-    return;
-  }
-
-
-  /* TANYA INGATAN */
-
-  if (
-    lower.includes("apa yang kamu ingat") ||
-    lower.includes("apa yang kamu simpan")
-  ) {
-
-    if (memory.catatan) {
-
-      pesan(
-`🧠 Yang aku ingat:
-
-${memory.catatan}`
-      );
-
-    } else {
-
-      pesan(
-        "Aku belum mempunyai ingatan."
-      );
+        return;
 
     }
 
-    return;
-  }
+
+    /* -----------------------------------------
+       SIMPAN INGATAN
+    ----------------------------------------- */
+
+    if (
+        simpanIngatan(text)
+    ) {
+
+        return;
+
+    }
 
 
-  /* SALAM */
+    /* -----------------------------------------
+       TANYA INGATAN
+    ----------------------------------------- */
 
-  if (
-    lower === "halo" ||
-    lower === "hai" ||
-    lower === "hi" ||
-    lower.includes("selamat pagi") ||
-    lower.includes("selamat siang") ||
-    lower.includes("selamat malam")
-  ) {
+    if (
 
-    pesan(
-      "Halo! 👋 Ada yang bisa aku bantu?"
-    );
+        lower.includes(
+            "apa yang kamu ingat"
+        )
 
-    return;
-  }
+        ||
+
+        lower.includes(
+            "apa yang kamu simpan"
+        )
+
+    ) {
 
 
-  /* IDENTITAS */
+        if (
+            memory.catatan
+        ) {
 
-  if (
-    lower.includes("siapa kamu") ||
-    lower.includes("kamu siapa")
-  ) {
+            pesan(
+`🧠 Yang aku ingat:
 
-    pesan(
+${memory.catatan}`
+            );
+
+        } else {
+
+            pesan(
+                "Aku belum mempunyai ingatan."
+            );
+
+        }
+
+
+        return;
+
+    }
+
+
+    /* -----------------------------------------
+       SALAM
+    ----------------------------------------- */
+
+    if (
+
+        lower === "halo"
+
+        ||
+
+        lower === "hai"
+
+        ||
+
+        lower === "hi"
+
+        ||
+
+        lower.includes(
+            "selamat pagi"
+        )
+
+        ||
+
+        lower.includes(
+            "selamat siang"
+        )
+
+        ||
+
+        lower.includes(
+            "selamat malam"
+        )
+
+    ) {
+
+
+        pesan(
+            "Halo! 👋 Ada yang bisa aku bantu?"
+        );
+
+
+        return;
+
+    }
+
+
+    /* -----------------------------------------
+       IDENTITAS
+    ----------------------------------------- */
+
+    if (
+
+        lower.includes(
+            "siapa kamu"
+        )
+
+        ||
+
+        lower.includes(
+            "kamu siapa"
+        )
+
+    ) {
+
+
+        pesan(
 `Aku adalah My AI Agent 🤖
 
 Aku dibuat menggunakan HTML, CSS, dan JavaScript.
@@ -720,130 +822,218 @@ Fitur:
 🧠 Pembelajaran sederhana
 💾 Memori lokal
 🧮 Kalkulator
-🔎 Web Search
-🌐 Google fallback
+🔎 Google Search
 💬 Chat`
-    );
-
-    return;
-  }
+        );
 
 
-  /* TERIMA KASIH */
+        return;
 
-  if (
-    lower.includes("terima kasih") ||
-    lower.includes("makasih")
-  ) {
-
-    pesan("Sama-sama! 😄");
-
-    return;
-  }
-
-
-  /* KALKULATOR */
-
-  if (
-    lower.startsWith("hitung ") ||
-    /^[0-9]/.test(lower)
-  ) {
-
-    const result = hitung(text);
-
-    if (result !== null) {
-
-      pesan(
-        "🧮 Hasilnya: " + result
-      );
-
-      return;
     }
-  }
 
 
-  /* SEARCH MANUAL */
+    /* -----------------------------------------
+       TERIMA KASIH
+    ----------------------------------------- */
 
-  const searchQuery =
-    apakahSearch(text);
+    if (
 
-  if (searchQuery) {
+        lower.includes(
+            "terima kasih"
+        )
 
-    await cariWeb(searchQuery);
+        ||
 
-    return;
-  }
+        lower.includes(
+            "makasih"
+        )
 
-
-  /* PERTANYAAN PENGETAHUAN */
-
-  if (
-    lower.includes("apa itu") ||
-    lower.includes("arti ") ||
-    lower.includes("pengertian ") ||
-    lower.includes("jelaskan ")
-  ) {
-
-    await cariWeb(text);
-
-    return;
-  }
+    ) {
 
 
-  /* INTENT YANG DIPELAJARI */
+        pesan(
+            "Sama-sama! 😄"
+        );
 
-  const intent =
-    kenaliIntent(text);
 
-  if (intent) {
+        return;
 
-    pesan(
-`🧠 Aku mengenali ini sebagai:
+    }
+
+
+    /* -----------------------------------------
+       KALKULATOR
+    ----------------------------------------- */
+
+    if (
+
+        lower.startsWith(
+            "hitung "
+        )
+
+        ||
+
+        /^[0-9]/.test(lower)
+
+    ) {
+
+
+        const result =
+            hitung(text);
+
+
+        if (
+            result !== null
+        ) {
+
+            pesan(
+                "🧮 Hasilnya: " +
+                result
+            );
+
+
+            return;
+
+        }
+
+    }
+
+
+    /* -----------------------------------------
+       SEARCH MANUAL
+    ----------------------------------------- */
+
+    const searchQuery =
+        apakahSearch(text);
+
+
+    if (
+        searchQuery
+    ) {
+
+        cariWeb(
+            searchQuery
+        );
+
+
+        return;
+
+    }
+
+
+    /* -----------------------------------------
+       PERTANYAAN PENGETAHUAN
+    ----------------------------------------- */
+
+    if (
+
+        lower.includes(
+            "apa itu"
+        )
+
+        ||
+
+        lower.includes(
+            "arti "
+        )
+
+        ||
+
+        lower.includes(
+            "pengertian "
+        )
+
+        ||
+
+        lower.includes(
+            "jelaskan "
+        )
+
+    ) {
+
+
+        cariWeb(text);
+
+
+        return;
+
+    }
+
+
+    /* -----------------------------------------
+       INTENT YANG DIPELAJARI
+    ----------------------------------------- */
+
+    const intent =
+        kenaliIntent(text);
+
+
+    if (
+        intent
+    ) {
+
+        pesan(
+`🧠 Aku mengenali pertanyaan ini sebagai:
 
 ${intent}
 
-Aku sudah mempelajari contoh tersebut, tetapi belum mempunyai jawaban khusus untuk intent ini.`
+Aku sudah mempelajari pola tersebut.`
+        );
+
+
+        return;
+
+    }
+
+
+    /* -----------------------------------------
+       JIKA TIDAK TAHU
+       LANGSUNG GOOGLE
+    ----------------------------------------- */
+
+    pesan(
+`🤔 Aku belum mengetahui jawabannya.
+
+🔎 Aku akan mencari pertanyaanmu di Google.`
     );
 
-    return;
-  }
 
+    bukaGoogle(text);
 
-  /* ==========================================
-     TIDAK MENGERTI
-     → LANGSUNG GOOGLE
-  ========================================== */
-
-  pesan(
-    "Aku belum mengetahui jawabannya. 🔎\nAku akan mencari pertanyaanmu di Google.",
-    "ai"
-  );
-
-  bukaGoogle(text);
 }
 
 
 /* =====================================================
-   KIRIM PESAN
+   KIRIM
 ===================================================== */
 
 async function kirim() {
 
-  const text =
-    input.value.trim();
+    const text =
+        input.value.trim();
 
-  if (!text) {
-    return;
-  }
 
-  pesan(
-    text,
-    "user"
-  );
+    if (!text) {
 
-  input.value = "";
+        return;
 
-  await proses(text);
+    }
+
+
+    pesan(
+        text,
+        "user"
+    );
+
+
+    input.value =
+        "";
+
+
+    await proses(
+        text
+    );
+
 }
 
 
@@ -852,8 +1042,8 @@ async function kirim() {
 ===================================================== */
 
 send.addEventListener(
-  "click",
-  kirim
+    "click",
+    kirim
 );
 
 
@@ -862,17 +1052,20 @@ send.addEventListener(
 ===================================================== */
 
 input.addEventListener(
-  "keydown",
-  function(event) {
+    "keydown",
+    function(event) {
 
-    if (event.key === "Enter") {
+        if (
+            event.key === "Enter"
+        ) {
 
-      event.preventDefault();
+            event.preventDefault();
 
-      kirim();
+            kirim();
+
+        }
+
     }
-
-  }
 );
 
 
@@ -881,10 +1074,10 @@ input.addEventListener(
 ===================================================== */
 
 btnContoh.addEventListener(
-  "click",
-  function() {
+    "click",
+    function() {
 
-    pesan(
+        pesan(
 `📚 CONTOH
 
 Halo
@@ -903,10 +1096,12 @@ Untuk mengajari AI:
 
 ajari | salam | halo
 
-ajari | salam | hai`
-    );
+ajari | salam | hai
 
-  }
+ajari | sekolah | saya ingin belajar`
+        );
+
+    }
 );
 
 
@@ -915,13 +1110,13 @@ ajari | salam | hai`
 ===================================================== */
 
 btnBelajar.addEventListener(
-  "click",
-  function() {
+    "click",
+    function() {
 
-    pesan(
+        pesan(
 `🧠 CARA MENGAJARI AI
 
-Gunakan:
+Gunakan format:
 
 ajari | nama_intent | contoh kalimat
 
@@ -934,9 +1129,9 @@ ajari | salam | hai
 ajari | sekolah | saya ingin belajar
 
 Data pembelajaran disimpan di browser.`
-    );
+        );
 
-  }
+    }
 );
 
 
@@ -945,20 +1140,25 @@ Data pembelajaran disimpan di browser.`
 ===================================================== */
 
 btnSearch.addEventListener(
-  "click",
-  function() {
+    "click",
+    function() {
 
-    const query =
-      prompt(
-        "Apa yang ingin kamu cari?"
-      );
+        const query =
+            prompt(
+                "Apa yang ingin kamu cari?"
+            );
 
-    if (!query) {
-      return;
+
+        if (!query) {
+
+            return;
+
+        }
+
+
+        cariWeb(query);
+
     }
-
-    cariWeb(query);
-  }
 );
 
 
@@ -967,41 +1167,51 @@ btnSearch.addEventListener(
 ===================================================== */
 
 btnReset.addEventListener(
-  "click",
-  function() {
+    "click",
+    function() {
 
-    const yakin =
-      confirm(
-        "Hapus semua memori dan pembelajaran?"
-      );
+        const yakin =
+            confirm(
+                "Hapus semua memori dan pembelajaran?"
+            );
 
-    if (!yakin) {
-      return;
+
+        if (!yakin) {
+
+            return;
+
+        }
+
+
+        localStorage.removeItem(
+            "myAI_memory"
+        );
+
+        localStorage.removeItem(
+            "myAI_training"
+        );
+
+        localStorage.removeItem(
+            "myAI_history"
+        );
+
+
+        memory = {};
+
+        training = {};
+
+        history = [];
+
+
+        chat.innerHTML =
+            "";
+
+
+        pesan(
+            "🗑️ Semua data sudah dihapus."
+        );
+
     }
-
-    localStorage.removeItem(
-      "myAI_memory"
-    );
-
-    localStorage.removeItem(
-      "myAI_training"
-    );
-
-    localStorage.removeItem(
-      "myAI_history"
-    );
-
-    memory = {};
-    training = {};
-    history = [];
-
-    chat.innerHTML = "";
-
-    pesan(
-      "🗑️ Semua data sudah dihapus."
-    );
-
-  }
 );
 
 
@@ -1019,16 +1229,13 @@ Aku bisa:
 🧠 Belajar
 💾 Mengingat
 🧮 Menghitung
-🔎 Mencari
-🌐 Membuka Google jika tidak menemukan jawaban
+🔎 Mencari di Google
 
-Coba:
+Contoh:
 
-Apa itu iklim?
+"apa itu iklim"
 
-Jika aku tidak menemukan jawabannya, aku akan membuka Google dan mencari:
-
-"apa itu iklim"`
+Kalau aku tidak tahu jawabannya, aku akan langsung membuka Google dengan pertanyaanmu.`
 );
 
 });
